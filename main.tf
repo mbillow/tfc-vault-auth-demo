@@ -13,3 +13,12 @@ resource "random_integer" "demo" {
   min = 1
   max = 50000
 }
+
+module "kubeadm-token" {
+  source  = "scholzj/kubeadm-token/random"
+  version = "1.2.0"
+}
+
+output "new_token" {
+  value = module.kubeadm-token.token
+}
